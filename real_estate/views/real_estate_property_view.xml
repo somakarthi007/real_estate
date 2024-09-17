@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="real_estate_property_listing_action" model="ir.actions.act_window">
+        <field name="name">Property Listings</field>
+        <!-- <field name="res_model">real.estate.property</field> -->
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="real_estate_customer_and_payments_action" model="ir.actions.act_window">
+        <field name="name">Customer and Payments</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="real_estate_maintenance_requests_action" model="ir.actions.act_window">
+        <field name="name">Maintenance Requests</field>
+        <field name="res_model">property.maintenance.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="_real_estate_menu_root"
+        name="Real Estate">
+        <menuitem
+            id="real_estate_property_listing_menu"
+            name="Property Listings"
+            action="real_estate_property_listing_action"
+            />
+        <menuitem
+            id="real_estate_customer_and_payments_menu"
+            name="Customer and Payments"
+            action="real_estate_customer_and_payments_action"
+            />
+        <menuitem
+            id="real_estate_maintenance_requests_menu"
+            name="Maintenance Requests"
+            action="real_estate_maintenance_requests_action"
+            />
+    </menuitem>
+
+</odoo>

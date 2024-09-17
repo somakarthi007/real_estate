@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <data>
+   
+    <record id="maintenance_request_view_tree" model="ir.ui.view">
+        <field name="name">maintenance_request.view.tree</field>
+        <field name="model">property.maintenance.request</field>
+        <field name="arch" type="xml">
+            <tree string="Maintenance Requests">
+                <field name="customer_id"></field>
+                <field name="property_product"></field>
+                <field name="issue_Category"></field>
+                <field name="priority_level"></field>
+                <field name="request_status"></field>
+            </tree>
+        </field>
+    </record>
+   
+   </data>
+   
+
+</odoo>

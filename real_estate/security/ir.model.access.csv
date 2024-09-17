@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_real_estate_property,access_real_estate_property,model_real_estate_property,base.group_user,1,1,1,1
+access_appliances_included,access_appliances_included,model_appliances_included,base.group_user,1,1,1,1
+access_interior_features,access_interior_features,model_interior_features,base.group_user,1,1,1,1
+access_exterior_features,access_exterior_features,model_exterior_features,base.group_user,1,1,1,1
+access_security_features,access_security_features,model_security_features,base.group_user,1,1,1,1
+access_sale_order,access_sale_order,model_sale_order,base.group_user,1,1,1,1
+access_property_maintenance_request,access_property_maintenance_request,model_property_maintenance_request,base.group_user,1,1,1,1
+

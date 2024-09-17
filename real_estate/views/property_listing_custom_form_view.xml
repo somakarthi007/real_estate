@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="real_estate_property_listing_view_form" model="ir.ui.view">
+            <field name="name">real_estate_property_listing.view.form</field>
+            <!-- <field name="model">real.estate.property</field> -->
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group name="Basic Property Information" string="Basic Property Information">
+                                <field name="is_real_estate_product"></field>
+                                <field name="property_type"></field>
+                                <field name="street_address"></field>                        
+                                <field name="city"></field>                        
+                                <field name="state"></field>                        
+                                <field name="postal_code"></field>                        
+                                <field name="country"></field>                        
+                                <field name="neighborhood"></field>                        
+                                <field name="description"></field>                        
+                            </group>
+                            <group name="Physical Characteristics" string="Physical Characteristics">
+                                <field name="building_type"></field>
+                                <field name="construction_year"></field>
+                                <field name="total_area"></field>                        
+                                <field name="number_of_floors"></field>                        
+                                <field name="number_of_units"></field>                        
+                                <field name="unit_size"></field>                        
+                                <field name="bedrooms"></field>                        
+                                <field name="bathrooms"></field>                        
+                                <field name="parking"></field>                        
+                            </group>
+                            <group name="Features and Amenities" string="Features and Amenities">
+                                <field name="heating_cooling"></field>
+                                <!-- <field name="applicances_included"></field> -->
+                                <field name="flooring"></field>                        
+                                <!-- <field name="interior_features"></field>                                                                     
+                                <field name="exterior_features"></field>                                                                     
+                                <field name="security_features"></field>                                                                      -->
+                            </group>
+                            <group name="Status and Availability" string="Status and Availability">
+                                <field name="status"></field>
+                                <field name="availability_date"></field>
+                                <field name="occupancy_status"></field>                                                                      
+                            </group>
+                            <group name="Additional Information" string="Additional Information">
+                                <field name="photos"></field>
+                                <field name="floor_plans"></field>
+                                <field name="virtual_tours"></field>                        
+                                <field name="agent_model_id"></field>                        
+                                <field name="buyer_model_id"></field>                        
+                                <!-- <field name="product_model_id"></field>                         -->
+                                <field name="notes"></field>                                               
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

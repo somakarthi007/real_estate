@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="maintenance_request_view_menu" model="website.menu">
+        <field name="name">Maintenance Request</field>
+        <field name="url">/maintenance-request</field>
+        <field name="parent_id" ref="website.main_menu" />
+        <field name="sequence">55</field>
+    </record>
+
+    <template id="all_maintenance_request_template" name="maintenance_requests">
+        <t t-call="website.layout">
+            <div class="container">
+                <style>
+                    .maintenance-request-button {
+                        background-color: #6b4962; /* Button background color matching the image */
+                        color: white; /* Text color */
+                        border: none; /* Remove default border */
+                        padding: 12px 24px; /* Padding for the button */
+                        font-size: 16px; /* Font size for text */
+                        border-radius: 8px; /* Rounded corners */
+                        cursor: pointer; /* Pointer cursor on hover */
+                        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+                        transition: background-color 0.3s ease; /* Smooth transition on hover */
+                    }
+            
+                    .maintenance-request-button:hover {
+                        background-color: #5a3e53; /* Darken the background on hover */
+                    }
+                </style>
+                <div style="margin-top: 1rem; display: flex; justify-content: space-around;">
+                    <h4 style="padding: 1rem;">Maintenance Requests</h4> 
+                    <a href="/maintenance-request-form" style="padding: 1rem;"><button class="maintenance-request-button">Create Maintenance Request</button></a>
+                </div>
+                <hr></hr>
+                <div class="row">
+                    <t t-if="message">
+                        <span style="margin: 1rem; border: 0.5px solid #006400; background-color: #90EE90; color: #006400; text-align: center; padding: 1rem; display: block;">
+                            <t t-esc="message" />
+                        </span>
+                    </t>
+                    <t t-foreach="maintenance_requests" t-as="maintenance_request">
+                        <div class="card d-inline-block m-2" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Maintenace Request MR-<t t-esc="maintenance_request.id"/></h5>
+                                <p class="card-text">
+                                    <div><strong>Property:</strong> <t t-esc="maintenance_request.property_product.name"/></div>
+                                    <div><strong>Issue Category:</strong> <t t-esc="maintenance_request.issue_Category"/></div>
+                                    <div><strong>Description of Issue:</strong> <t t-esc="maintenance_request.description_of_issue"/></div>
+                                    <div><strong>Priority Level:</strong> <t t-esc="maintenance_request.priority_level"/></div>
+                                    <div><strong>Request Status:</strong> <t t-esc="maintenance_request.request_status"/></div>
+                                    <div><strong>Scheduled Date/Time:</strong> <t t-esc="maintenance_request.scheduled_date_time"/></div>
+                                    <div><strong>Assigned Technician:</strong> <t t-esc="maintenance_request.assigned_technician.name"/></div>
+                                    <div><strong>Completion Date:</strong> <t t-esc="maintenance_request.completion_date"/></div>
+                                    <div><strong>Description of the work performed:</strong> <t t-esc="maintenance_request.resolution_details"/></div>
+                                </p>
+                            </div>
+                        </div>
+                    </t> 
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="maintenance_request_form_template" name="maintenance_request_form">
+        <t t-call="website.layout">
+
+            <div class="container">
+                <style>
+                    .submit-button {
+                        background-color: #6b4962; /* Button background color matching the image */
+                        color: white; /* Text color */
+                        border: none; /* Remove default border */
+                        padding: 12px 24px; /* Padding for the button */
+                        font-size: 16px; /* Font size for text */
+                        border-radius: 8px; /* Rounded corners */
+                        cursor: pointer; /* Pointer cursor on hover */
+                        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+                        transition: background-color 0.3s ease; /* Smooth transition on hover */
+                    }
+            
+                    .submit-button:hover {
+                        background-color: #5a3e53; /* Darken the background on hover */
+                    }
+                </style>
+            
+                <form style="margin: 2rem;" action="/create-maintenance-request" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <input type="hidden" name="customer_id" t-att-value="customer_id" />
+                    <div class="form-group">
+                        <label for="property_product" class="control-label">Choose Property</label>
+                        <select name="property_product" class="form-control">
+                            <t t-foreach="property_product" t-as="property">
+                                <option t-att-value="property.id"><t t-esc="property.name"/></option>
+                            </t>
+                        </select>
+                    </div> <br></br>
+                    <div class="form-group">
+                        <label for="issue_Category" class="control-label">Issue Category</label>
+                        <select name="issue_Category" class="form-control">
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="HVAC">HVAC</option>
+                            <option value="Appliance">Appliance</option>
+                            <option value="General Maintenance">General Maintenance</option>
+                        </select>
+                    </div> <br></br>
+                    <div class="form-group">
+                        <label for="description_of_issue" class="control-label">Description of Issue</label>
+                        <textarea name="description_of_issue" rows="1" cols="50"></textarea>                    
+                    </div> <br></br>
+                    <div class="form-group">
+                        <label for="priority_level" class="control-label">Priority Level</label>
+                        <select name="priority_level" class="form-control">
+                            <option value="Urgent">Urgent</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div> <br></br>
+                    <button class="submit-button" type="submit">Submit</button>
+                </form>
+            </div>
+        </t>
+    </template>
+
+</odoo>
